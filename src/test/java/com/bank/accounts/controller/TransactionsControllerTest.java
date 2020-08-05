@@ -39,7 +39,7 @@ class TransactionsControllerTest {
 		final String accountNumber = "10002";
 		when(transactionRepo.findAllByAccountNumber(accountNumber)).thenReturn(mockData.getTransactions());
 
-		mockMvc.perform(get("/users/Ravi/accounts/10002/transactions")).andExpect(status().isOk());
+		mockMvc.perform(get("/users/Ravi/accounts/"+accountNumber+"/transactions")).andExpect(status().isOk());
 
 	}
 
@@ -47,9 +47,9 @@ class TransactionsControllerTest {
 	void testTransactionControllerException() throws Exception {
 
 		final String accountNumber = "10003";
-		doThrow(new RuntimeException()).when(transactionRepo).findAllByAccountNumber(accountNumber);
+		doThrow(new RuntimeException("DB Error")).when(transactionRepo).findAllByAccountNumber(accountNumber);
 
-		mockMvc.perform(get("/users/Ravi/accounts/10003/transactions")).andExpect(status().is(HttpStatus.INTERNAL_SERVER_ERROR.value()));
+		mockMvc.perform(get("/users/Ravi/accounts/"+accountNumber+"/transactions")).andExpect(status().is(HttpStatus.INTERNAL_SERVER_ERROR.value()));
 
 	}
 

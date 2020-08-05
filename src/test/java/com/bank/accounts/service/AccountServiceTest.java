@@ -10,7 +10,7 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mockito;
+import static org.mockito.Mockito.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
@@ -37,7 +37,7 @@ public class AccountServiceTest {
 	@Test
 	public void testUserHasAccounts() {
 		final String accountName = "Ravi";
-		Mockito.when(accountRepo.findAllByAccountName(accountName)).thenReturn(mockData.getAccounts());
+		when(accountRepo.findAllByAccountName(accountName)).thenReturn(mockData.getAccounts());
 
 		List<Accounts> accounts = accountService.getAccounts(accountName);
 		
@@ -55,7 +55,7 @@ public class AccountServiceTest {
 	@Test
 	public void testUserHasNoAccounts() {
 		final String accountNumber = "999";
-		Mockito.when(accountRepo.findAllByAccountName(accountNumber)).thenReturn(mockData.noAccounts());
+		when(accountRepo.findAllByAccountName(accountNumber)).thenReturn(mockData.noAccounts());
 
 		List<Accounts> accounts = accountService.getAccounts(accountNumber);
 		

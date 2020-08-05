@@ -12,3 +12,10 @@ APIs
 - Transactions API
 
   Use first API and drill down using hateoas :)
+
+# Upgrades Planned
+
+1. Logging
+1. Pagging
+1. Assertion improvements
+1. hateos using AOP
