@@ -5,7 +5,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mockito;
+import static org.mockito.Mockito.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
@@ -31,7 +31,7 @@ class AccountsControllerTest {
 	@Test
 	void testAccountsController() throws Exception {
 		final String accountName = "Ravi";
-		Mockito.when(accountRepo.findAllByAccountName(accountName)).thenReturn(mockData.getAccounts());
+		when(accountRepo.findAllByAccountName(accountName)).thenReturn(mockData.getAccounts());
 
 		mockMvc.perform(get("/users/Ravi/accounts")).andExpect(status().isOk());
 	}

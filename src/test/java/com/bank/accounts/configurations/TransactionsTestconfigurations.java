@@ -1,6 +1,6 @@
 package com.bank.accounts.configurations;
 
-import org.mockito.Mockito;
+import static org.mockito.Mockito.*;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
 
@@ -12,7 +12,7 @@ public class TransactionsTestconfigurations {
 
 	@Bean
 	public TransactionsRepository transactionRepo() {
-		return Mockito.mock(TransactionsRepository.class);
+		return mock(TransactionsRepository.class);
 	}
 	
 	@Bean
